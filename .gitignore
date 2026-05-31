@@ -37,3 +37,4 @@ coverage/
 .vercel/
 Preview/
 *.md
+!README.md
