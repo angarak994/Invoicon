@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Dancing+Script:wght@600&family=Caveat:wght@600&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  --color-brand: var(--brand-color);
+  --color-brand-glow: var(--brand-glow);
+  --color-brand-dark: var(--brand-dark);
+  
+  --color-bg-app: var(--bg-app);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-tertiary: var(--bg-tertiary);
+  
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-tertiary: var(--text-tertiary);
+  
+  --color-border-subtle: var(--border-subtle);
+}
+
+:root {
+  /* Dynamic Style Parameters (Customized by ThemeContext dynamically) */
+  --brand-color: #01019d;
+  --brand-glow: rgba(1, 1, 157, 0.15);
+  --brand-dark: #010170;
+
+  /* Global Light Mode Layout Variables */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  
+  --text-main: #000000;
+  --text-muted: #475569;
+  --text-tertiary: #94a3b8;
+  
+  --border-subtle: #e2e8f0;
+}
+
+[data-theme="dark"] {
+  /* Global Dark Mode Layout Variables */
+  --bg-app: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-tertiary: #111827;
+  
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-tertiary: #6b7280;
+  
+  --border-subtle: #1f2937;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: color-mix(in srgb, var(--bg-surface) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Custom PDF Page Printing Override Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-container {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+}
